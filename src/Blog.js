@@ -6,7 +6,6 @@ import { Modal } from 'antd';
 import 'antd/dist/antd.css';
 
 class Blog extends Component {
-    //DIGANTI==========================================
     state = {
         post: [],
         visible: false,
@@ -22,6 +21,7 @@ class Blog extends Component {
         }
     }
 
+    //get API
     getAPI = () => {
         axios({
             method: "get",
@@ -41,13 +41,14 @@ class Blog extends Component {
             });
     }
 
+    //nampilin modal create post
     showModalAdd = () => {
         this.setState({
             visible: true,
         });
     }
 
-    //DITAMBAHKAN==========================================
+    //nampilin modal update post
     showModalAdd2 = (data) => {
         this.setState({
             ...this.state,
@@ -59,6 +60,7 @@ class Blog extends Component {
         console.log(data);
     }
 
+    // post API
     handleAddPost = () => {
         if (this.state.formPost.title && this.state.formPost.content) {
             axios({
@@ -85,7 +87,7 @@ class Blog extends Component {
         }
     };
 
-    //DITAMBAHKAN==========================================
+    // put API
     handleUpdatePost = () => {
         if (this.state.updatePost.title && this.state.updatePost.content) {
             axios({
@@ -112,6 +114,7 @@ class Blog extends Component {
         }
     };
 
+    // handle event perubahan data create
     handleFormChange = (event) => {
         let formPostNew = { ...this.state.formPost };
         formPostNew[event.target.name] = event.target.value;
@@ -120,7 +123,7 @@ class Blog extends Component {
         })
     }
 
-    //DITAMBAHKAN==========================================
+    // handle event perubahan data update
     handleFormChange2 = (event) => {
         let formPostNew = { ...this.state.updatePost };
         formPostNew[event.target.name] = event.target.value;
@@ -129,7 +132,7 @@ class Blog extends Component {
         })
     }
 
-    //DIGANTI==========================================
+    // method delete API
     handleDelete = (data) => {
         axios({
             method: "delete",
@@ -158,6 +161,7 @@ class Blog extends Component {
                 <p className="section-title">Blog Post</p>
                 <button className="btn-add" onClick={this.showModalAdd}>Create New Post</button>
 
+                {/* modal create post */}
                 <Modal
                     title="Create New Post"
                     centered
@@ -180,7 +184,7 @@ class Blog extends Component {
                     </div>
                 </Modal>
 
-                {/* DITAMBAHKAN========================================== */}
+                {/* modal update post */}
                 <Modal
                     title="Update Post"
                     centered
@@ -202,12 +206,13 @@ class Blog extends Component {
                     </div>
                 </Modal>
 
+                {/* perulangan data API pake map */}
                 {
                     this.state.post.map(post => {
                         return <Post
                             key={post.id}
                             data={post}
-                            update={this.showModalAdd2}     //DITAMBAHKAN==========================================
+                            update={this.showModalAdd2}
                             delete={this.handleDelete}
                         />
                     })

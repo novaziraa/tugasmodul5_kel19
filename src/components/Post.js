@@ -10,7 +10,7 @@ const Post = (props) => {
                 <p className="title">{props.data.title}</p>
                 <p className="desc" dangerouslySetInnerHTML={{ __html: props.data.content }} />
                 <div className="button">
-                    {/* <button className="btn-edit">Edit</button> */}
+                    <button className="btn-edit" onClick={() => props.update(props.data.id)}>Edit</button>
                     <button className="btn-delete" onClick={() => props.delete(props.data.id)}>Delete</button>
                 </div>
             </div>
