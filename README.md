@@ -6,4 +6,4 @@
 
 ## Note :
 
-buat jalanin project di browser, donlot file rest-ci.zip dulu gan buat rest-api server di localhost
+buat jalanin project di browser, donlot file API.zip dulu gan buat rest-api server di localhost
